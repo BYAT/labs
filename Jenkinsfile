@@ -34,7 +34,7 @@ spec:
     stages {
         stage ('build') {
             steps { 
-                container('dnd') {
+                container('kubectl') {
                     sh "curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash"
                     sh "make cluster"
                     sh "make deploy"
