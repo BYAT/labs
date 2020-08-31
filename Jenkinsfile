@@ -35,6 +35,8 @@ spec:
         stage ('build') {
             steps { 
                 container('kubectl') {
+                    sh "ls /var/log/journal"
+                    sh "echo 'log'"
                     sh "ls /etc/"
                     sh "curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash"
                     sh "make cluster"
