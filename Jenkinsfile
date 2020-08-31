@@ -19,7 +19,7 @@ spec:
     - mountPath: /var/run/docker.sock
       name: docker-sock
   - name: kubectl
-    image: danya97/k3d:v1
+    image: bryandollery/terraform-packer-aws-alpine
     command:
     - cat
     tty: true
@@ -35,14 +35,9 @@ spec:
         stage ('build') {
             steps { 
                 container('kubectl') {
-                    sh "k3d cluster create labs \
-	    -p 80:80@loadbalancer \
-	    -p 443:443@loadbalancer \
-	    -p 30000-32767:30000-32767@server[0] \
-	    -v /etc/machine-id:/etc/machine-id:ro \
-	    -v /var/log/journal:/var/log/journal:ro \
-	    -v /var/run/docker.sock:/var/run/docker.sock \
-	    --agents 3"
+                    sh "docker pull rancher/k3d-proxy:v3.0.1"
+                    sh "curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash"
+                    sh "make cluster"
                     sh "make deploy"
                     sh "kubectl get all -n elf"
                     sh "kubectl get all -n monitor"
