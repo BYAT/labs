@@ -19,7 +19,7 @@ spec:
     - mountPath: /var/run/docker.sock
       name: docker-sock
   - name: kubectl
-    image: danya97/k3d
+    image: danya97/k3d:v1
     command:
     - cat
     tty: true
