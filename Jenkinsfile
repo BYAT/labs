@@ -9,6 +9,8 @@ pipeline {
         stage ('build') {
             steps { 
                 sh "make up jenkins elf pro-graf"
+                sh "kubectl get all -n elf"
+                sh "kubectl get all -n monitor"
                 sh "git clone https://github.com/Danya-Mudaifea/auto && cd auto"
                 sh "java -jar jenkins-cli.jar -s http://${JENKINS_SERVICE_HOST}/jenkins/ -webSocket install-plugin github-pullrequest
                     java -jar jenkins-cli.jar -s http://${JENKINS_SERVICE_HOST}/jenkins/ -webSocket create-job department-service < department-service.xml
