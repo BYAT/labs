@@ -34,7 +34,8 @@ spec:
     stages {
         stage ('build') {
             steps { 
-                sh "make up jenkins elf pro-graf"
+                sh "make cluster"
+                sh "make deploy"
                 sh "kubectl get all -n elf"
                 sh "kubectl get all -n monitor"
                 sh "git clone https://github.com/Danya-Mudaifea/auto && cd auto"
