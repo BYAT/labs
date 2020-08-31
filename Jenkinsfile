@@ -36,7 +36,7 @@ spec:
             steps { 
                 container('kubectl') {
                     sh "docker pull rancher/k3d-proxy:v3.0.1"
-                    sh "curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash"
+                    sh "curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh"
                     sh "make cluster"
                     sh "make deploy"
                     sh "kubectl get all -n elf"
