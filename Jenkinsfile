@@ -34,7 +34,7 @@ spec:
     stages {
         stage ('build') {
             steps { 
-                container('dnd') {
+                container('kubectl') {
                     sh "make cluster"
                     sh "make deploy"
                     sh "kubectl get all -n elf"
