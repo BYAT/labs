@@ -31,7 +31,6 @@ spec:
 """
     }
   }
-    }
     stages {
         stage ('build') {
             steps { 
