@@ -38,7 +38,8 @@ spec:
                 container('kubectl') {
                     sh "ls"
                     sh "pwd"
-                    sh "make elf-tidy elf-clone elf-up"
+                    sh "kubectl create -n labs clusterrolebinding jenkins --clusterrole cluster-admin --serviceaccount=jenkins:default"
+                    sh "make pro-graf-down elf-tidy elf-clone elf-up"
                     sh "kubectl get all -n elf"
                 }
             }
