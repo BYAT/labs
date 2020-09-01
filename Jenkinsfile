@@ -32,6 +32,15 @@ spec:
     }
   }
     stages {
+
+        stage ('build-elf') {
+            steps { 
+                container('kubectl') {
+                    sh "make elf"
+                    sh "kubectl get all -n elf"
+                }
+            }
+        }
         stage ('build-pro-graf') {
             steps { 
                 container('kubectl') {
