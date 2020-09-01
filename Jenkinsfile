@@ -37,7 +37,7 @@ spec:
             steps { 
                 container('kubectl') {
                     
-                    sh "make elf"
+                    sh "make elf-clone elf-up"
                     sh "kubectl get all -n elf"
                 }
             }
@@ -45,7 +45,7 @@ spec:
         stage ('build-pro-graf') {
             steps { 
                 container('kubectl') {
-                    sh "make pro-graf"
+                    sh "make pro-graf-clone pro-graf-up"
                     sh "kubectl get all -n monitor"
                 }
             }
