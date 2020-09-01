@@ -36,7 +36,8 @@ spec:
         stage ('build-elf') {
             steps { 
                 container('kubectl') {
-                    sh "make elf-clone elf-up elf-test elf-tidy"
+                    sh "cd elf"
+                    sh "make elf"
                     sh "kubectl get all -n elf"
                 }
             }
