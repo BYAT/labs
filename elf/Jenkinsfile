@@ -36,6 +36,7 @@ spec:
         stage ('build-elf') {
             steps { 
                 container('kubectl') {
+                    sh "rm -rf elf"
                     sh "git clone https://github.com/Danya-Mudaifea/elf"
                     sh "cd elf && ./elf.sh"
                     sh "curl localhost/elf"
