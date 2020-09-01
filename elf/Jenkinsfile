@@ -38,7 +38,7 @@ spec:
                 container('kubectl') {
                     sh "ls"
                     sh "pwd"
-                    sh "make pro-graf-down elf-tidy elf-clone elf-up"
+                    sh "make elf-down elf-tidy elf-clone elf-up"
                     sh "kubectl get all -n elf"
                 }
             }
