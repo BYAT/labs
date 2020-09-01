@@ -36,8 +36,14 @@ spec:
         stage ('build-elf') {
             steps { 
                 container('kubectl') {
-                    sh "cd elf"
-                    sh "make elf"
+                    sh "git clone https://github.com/Danya-Mudaifea/elf"
+                    sh "cd elf && ./elf.sh"
+                    sh "curl localhost/elf"
+                    sh "rm -rf elf"
+                    sh "helm uninstall elasticsearch --namespace=elf"
+                    sh "helm uninstall fluent-bit --namespace=elf"
+                    sh "helm uninstall kibana --namespace=elf"
+                    sh "kubectl delete random-logger -n elf"
                     sh "kubectl get all -n elf"
                 }
             }
