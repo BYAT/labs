@@ -37,7 +37,7 @@ spec:
                 container('kubectl') {
                     sh "ls"
                     sh "pwd"
-                    sh "make pro-graf-clone pro-graf-up"
+                    sh "make pro-graf-tidy pro-graf-clone pro-graf-up"
                     sh "kubectl get all -n monitor"
                 }
             }
