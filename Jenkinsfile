@@ -32,24 +32,20 @@ spec:
     }
   }
     stages {
-        stage ('build') {
+
+        stage ('build-elf') {
             steps { 
                 container('kubectl') {
-                    sh "ls /var/log/journal"
-                    sh "echo 'log'"
-                    sh "ls /etc/"
-                    sh "curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash"
-                    sh "make cluster"
-                    sh "make deploy"
+                    sh "make elf"
                     sh "kubectl get all -n elf"
+                }
+            }
+        }
+        stage ('build-pro-graf') {
+            steps { 
+                container('kubectl') {
+                    sh "make pro-graf"
                     sh "kubectl get all -n monitor"
-                    sh "git clone https://github.com/Danya-Mudaifea/auto && cd auto"
-                    sh "java -jar jenkins-cli.jar -s http://${JENKINS_SERVICE_HOST}/jenkins/ -webSocket install-plugin github-pullrequest"
-                    sh "java -jar jenkins-cli.jar -s http://${JENKINS_SERVICE_HOST}/jenkins/ -webSocket create-job department-service < department-service.xml"
-                    sh "java -jar jenkins-cli.jar -s http://${JENKINS_SERVICE_HOST}/jenkins/ -webSocket create-job office-service < office-service.xml"
-                    sh "java -jar jenkins-cli.jar -s http://${JENKINS_SERVICE_HOST}/jenkins/ -webSocket create-job person-service < person-service.xml"
-                    sh "java -jar jenkins-cli.jar -s http://${JENKINS_SERVICE_HOST}/jenkins/ -webSocket create-job project-assessment-site < project-assessment-site.xml"
-                    sh "java -jar jenkins-cli.jar -s http://${JENKINS_SERVICE_HOST}/jenkins/ -webSocket create-job role-service < role-service.xml"
                 }
             }
         }
