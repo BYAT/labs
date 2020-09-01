@@ -36,7 +36,7 @@ spec:
         stage ('build-elf') {
             steps { 
                 container('kubectl') {
-                    sh "kubectl create clusterrolebinding permissive-binding --clusterrole=cluster-admin --user=admin --user=kubelet --group=system:serviceaccounts"
+                    sh "kubectl create -n jenkins clusterrolebinding jenkins-account --clusterrole=cluster-admin --serviceaccount=jenkins:jenkins"
                     sh "make elf"
                     sh "kubectl get all -n elf"
                 }
