@@ -15,7 +15,7 @@ cluster:
 jenkins: jenkins-clone jenkins-up jenkins-test jenkins-tidy
 
 jenkins-clone:
-	git clone https://github.com/Danya-Mudaifea/k8s-jenkins
+	git clone https://github.com/BYAT/k8s-jenkins
 
 jenkins-up:
 	cd k8s-jenkins && ./jenkins.sh
@@ -32,7 +32,7 @@ jenkins-down:
 elf: elf-clone elf-up elf-test elf-tidy
 
 elf-clone:
-	git clone https://github.com/Danya-Mudaifea/elf
+	git clone https://github.com/BYAT/elf
 
 elf-up:
 	cd elf && ./elf.sh
@@ -52,7 +52,7 @@ elf-down:
 pro-graf: pro-graf-clone pro-graf-up pro-graf-test pro-graf-tidy
 
 pro-graf-clone:
-	git clone https://github.com/Danya-Mudaifea/pro-graf
+	git clone https://github.com/BYAT/pro-graf
 
 pro-graf-up:
 	cd pro-graf && ./pro-graf.sh
