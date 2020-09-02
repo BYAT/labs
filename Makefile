@@ -12,7 +12,7 @@ cluster:
 	    -v /var/run/docker.sock:/var/run/docker.sock \
 	    --agents 3
 
-jenkins: jenkins-clone jenkins-up jenkins-test jenkins-tidy
+jenkins: jenkins-clone jenkins-up jenkins-tidy
 
 jenkins-clone:
 	git clone https://github.com/BYAT/k8s-jenkins
@@ -29,7 +29,7 @@ jenkins-tidy:
 jenkins-down:
 	cd k8s-jenkins && kubectl delete jenkins.helm.yaml
 
-elf: elf-clone elf-up elf-test elf-tidy
+elf: elf-clone elf-up elf-tidy
 
 elf-clone:
 	git clone https://github.com/BYAT/elf
@@ -49,7 +49,7 @@ elf-down:
 	helm uninstall kibana --namespace=elf
 	kubectl delete random-logger -n elf
 
-pro-graf: pro-graf-clone pro-graf-up pro-graf-test pro-graf-tidy
+pro-graf: pro-graf-clone pro-graf-up pro-graf-tidy
 
 pro-graf-clone:
 	git clone https://github.com/BYAT/pro-graf
