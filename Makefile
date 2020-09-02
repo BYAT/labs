@@ -18,7 +18,7 @@ jenkins-clone:
 	git clone https://github.com/BYAT/k8s-jenkins
 
 jenkins-up:
-	cd k8s-jenkins && ./jenkins.sh
+	cd k8s-jenkins && bash jenkins.sh
 
 jenkins-test:
 	curl -L localhost/jenkins
@@ -35,7 +35,7 @@ elf-clone:
 	git clone https://github.com/BYAT/elf
 
 elf-up:
-	cd elf && ./elf.sh
+	cd elf && bash elf.sh
 
 elf-test:
 	curl localhost/elf
@@ -55,7 +55,7 @@ pro-graf-clone:
 	git clone https://github.com/BYAT/pro-graf
 
 pro-graf-up:
-	cd pro-graf && ./pro-graf.sh
+	cd pro-graf && bash pro-graf.sh
 
 pro-graf-test:
 	curl localhost/grafana
